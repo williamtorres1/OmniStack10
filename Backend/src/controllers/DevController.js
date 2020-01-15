@@ -36,5 +36,13 @@ module.exports = {
                 })
             }
         return response.json(dev);
+    },
+
+    async update(){
+        //Atualizar: BIO, AVATAR, TECNOLOGIAS, NOME, LOCALIZAÇÃO
+    },
+    
+    async destroy(){
+        //Deletar dev
     }
 }
