@@ -3,15 +3,24 @@ const express = require('express');
 const mongoose = require('mongoose');
 const mongodbApiKey = require('../credentials/mongoDB.json').ApiKey;
 const routes = require('./routes');
+const cors = require('cors');
+const http = require('http');
+const { setupWebScoket } = require('./websocket.js');
 const app = express();
 
+const server = http.Server(app);
+
+setupWebScoket(server);
 mongoose.connect(mongodbApiKey,
     {useNewUrlParser: true,
     useUnifiedTopology: true,
 });
-
+app.use(cors());
 app.use(express.json());
 app.use(routes);
+
+
+server.listen(3333);
 // Métodos HTTP: GET, PUT, POST, DELETE
 
 
@@ -25,4 +34,3 @@ app.use(routes);
 
 
 
-app.listen(3333);
