@@ -5,12 +5,12 @@ const mongodbApiKey = require('../credentials/mongoDB.json').ApiKey;
 const routes = require('./routes');	
 const cors = require('cors');	
 const http = require('http');	
-const { setupWebScoket } = require('./websocket.js');	
+const { setupWebSocket } = require('./websocket.js');	
 const app = express();	
 
 const server = http.Server(app);	
 
-setupWebScoket(server);	
+setupWebSocket(server);	
 mongoose.connect(mongodbApiKey,	
     {useNewUrlParser: true,	
     useUnifiedTopology: true,	
